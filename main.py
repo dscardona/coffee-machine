@@ -3,9 +3,9 @@ profit = 0
 
 def enough_resources(chosen_drink_ingredients):
     """Receives the ingredients of the drink selected by the user, determines whether there are enough resources to make the drink, returns boolean."""
-    for item in recipe:
+    for item in chosen_drink_ingredients:
         if chosen_drink_ingredients[item] > resources[item]:
-            print(f"Sorry, there is not enough {item}")
+            print(f"\nSorry, there is not enough {item}.\n")
             return False
         return True
 
@@ -30,21 +30,21 @@ def print_report():
 
 def successful_transaction(money_received, drink_cost):
     # """Returns True if amount sufficient and False if it isnt't."""
-    if money_received >= cost:
+    if money_received >= drink_cost:
         change = round(money_received - drink_cost, 2)
-        print(f"Here is ${change} in change.")
+        print(f"\nHere is ${change} in change.")
         global profit
         profit += drink_cost
         return True
     else:
-        print("Sorry, that isn't enoug. Money refunded. \n")
+        print("\nSorry, that isn't enough. Money refunded. \n")
         return False
 
 def make_coffee(drink_name, order_ingredients):
     """Deduct required ingredients from resources."""
     for item in order_ingredients:
         resources[item] -= order_ingredients[item]
-    print(f"Here is your {drink_name}. Enjoy! ☕")
+    print(f"Here is your {drink_name}. Enjoy! ☕\n")
 
 
 coffee_machine_on = True
