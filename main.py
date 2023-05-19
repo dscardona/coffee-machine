@@ -1,6 +1,7 @@
+from data import MENU, resources 
 
+money_in_machine = 0
 
-# TODO: Define variables: resources, money counter
 # TODO: Function to determine if there are enough resources, Function to determine if transaction was successful, Function to return change, Function to "Make coffee": deduct resources, add money to money counter and print success.
 
 # TODO: Prompt user to make a choice
@@ -25,28 +26,3 @@
 # TODO: Print report with current Water, Milk, Coffee and Money values, with word "report". Prompt again.
 
 
-# RECIPES:
-#     Espresso:
-#     1.50
-#     50ml water
-#     18g coffee
-
-#     Latte:
-#     2.50
-#     200ml water
-#     24g coffee
-#     150ml Milk
-
-#     Cappuccino:
-#     3.00
-#     250ml water
-#     24g coffee
-#     100ml milk
-
-# ACCEPTED COINS:
-# .01
-# .05
-# .10
-# .25
-
-# STARTING RESOURCES:
