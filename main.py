@@ -1,9 +1,5 @@
 from data import MENU, resources 
 
-money_in_machine = 0
-
-# TODO: Function to determine if transaction was successful, Function to return change, Function to "Make coffee": deduct resources, add money to money counter and print success.
-
 def enough_resources(chosen_drink):
     """Receives the drink selected by the user, determines whether there are enough resources to make the drink, returns boolean."""
     recipe = MENU[chosen_drink]["ingredients"]
@@ -34,15 +30,22 @@ def count_coins():
     quarters_amt = int(input("How many quarters? ")) * .25
     dimes_amt = int(input("How many dimes? ")) * .10
     nickels_amt = int(input("How many nickels? ")) * .05
-    pennies_amt = int(input("How many pennies?")) * .01
+    pennies_amt = int(input("How many pennies? ")) * .01
 
     total_entered = round(quarters_amt + dimes_amt + nickels_amt + pennies_amt, 2)
     return total_entered
 
+def make_coffee(chosen_drink):
 
+
+
+money_received = 0
+change_rendered = 0
+total_in_machine = money_received - change_rendered
 
 choice = input("Please enter a number: \n1. Espresso \n2. Latte \n3. Cappuccino\n" )
 
+drink_to_make = ""
 if choice == "1":
     drink_to_make = "espresso"
 elif choice == "2":
@@ -52,9 +55,22 @@ elif choice == "3":
 else:
     print("That's not an option")
 
-
+total_entered = 0
 if enough_resources(drink_to_make):
     total_entered = count_coins()
+
+cost = MENU[drink_to_make]["cost"] 
+if cost == total_entered:
+    money_received += total_entered
+    #make_coffee()
+elif cost < total_entered:
+    money_received += cost
+    change = abs(cost - total_entered)
+    print(f"Here's your change: ${change}")
+    change_rendered += change
+    #make_coffee()
+else:
+    print(f"Sorry, that's not enough. Here's your refund: ${total_entered}")
 
 
 
