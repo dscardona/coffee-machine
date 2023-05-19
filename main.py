@@ -2,7 +2,7 @@ from data import MENU, resources
 
 money_in_machine = 0
 
-# TODO: Function to determine if there are enough resources, Function to determine if transaction was successful, Function to return change, Function to "Make coffee": deduct resources, add money to money counter and print success.
+# TODO: Function to determine if transaction was successful, Function to return change, Function to "Make coffee": deduct resources, add money to money counter and print success.
 
 def enough_resources(chosen_drink):
     """Receives the drink selected by the user, determines whether there are enough resources to make the drink, returns boolean."""
@@ -24,11 +24,24 @@ def enough_resources(chosen_drink):
         print("Sorry, there isn'e enough milk")
         return False
 
-    return True
+    # return True
+    return print("True")
 
 
+choice = input("Please enter a number: \n1. Espresso \n2. Latte \n3. Cappuccino\n" )
 
-# TODO: Prompt user to make a choice
+if choice == "1":
+    drink_to_make = "espresso"
+elif choice == "2":
+    drink_to_make = "latte"
+elif choice == "3":
+    drink_to_make = "cappuccino"
+else:
+    print("That's not an option")
+
+enough_resources(drink_to_make)
+
+
 # TODO: Prompt user to insert coins, how many quarters, dimes, nickels, and pennies.
         # TODO:Check if there's enough Water, Milk, and Coffee to make user's selected drink. Let user know if resources arent sufficient "Sorry, there's not enough water"
         # Function to determine if there are enough resources, returns boolean. returns true or false.
