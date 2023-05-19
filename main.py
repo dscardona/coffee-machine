@@ -22,7 +22,6 @@ def enough_resources(chosen_drink):
 
     return True
 
-
 def count_coins():
     """Gets number/kind of coins entered, returns amount entered"""
 
@@ -34,9 +33,6 @@ def count_coins():
 
     total_entered = round(quarters_amt + dimes_amt + nickels_amt + pennies_amt, 2)
     return total_entered
-
-def make_coffee(chosen_drink):
-
 
 
 money_received = 0
@@ -62,22 +58,29 @@ if enough_resources(drink_to_make):
 cost = MENU[drink_to_make]["cost"] 
 if cost == total_entered:
     money_received += total_entered
-    #make_coffee()
+    print(f"Here's your {drink_to_make}. Enjoy!")
+    resources["water"] -= MENU[drink_to_make]["ingredients"]["water"]
+    resources["coffee"] -= MENU[drink_to_make]["ingredients"]["coffee"]
+    if "milk" in MENU[drink_to_make]["ingredients"]:
+        resources["milk"] -= MENU[drink_to_make]["ingredients"]["milk"]
+
 elif cost < total_entered:
     money_received += cost
     change = abs(cost - total_entered)
     print(f"Here's your change: ${change}")
     change_rendered += change
-    #make_coffee()
+    print(f"Here's your {drink_to_make}. Enjoy!")
+    resources["water"] -= MENU[drink_to_make]["ingredients"]["water"]
+    resources["coffee"] -= MENU[drink_to_make]["ingredients"]["coffee"]
+    if "milk" in MENU[drink_to_make]["ingredients"]:
+        resources["milk"] -= MENU[drink_to_make]["ingredients"]["milk"]
+
 else:
     print(f"Sorry, that's not enough. Here's your refund: ${total_entered}")
 
 
-
+print(resources)
  
-
-
-#TODO: Another function? If transaction successful (zero not returned from coins inserted check function), and there are enough resources (resources function returns True) , deduct resources from the machine and tell the user: “Here is your {drink_of_choice}. Enjoy!” Print change being returned.
 
 # TODO: Keep prompting user for choice, while loop with off flag or recursion (new "coffee-machine-on "function)
 
