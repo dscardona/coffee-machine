@@ -1,4 +1,7 @@
 from data import MENU, resources 
+money_received = 0
+change_rendered = 0
+total_in_machine = money_received - change_rendered
 
 def enough_resources(chosen_drink):
     """Receives the drink selected by the user, determines whether there are enough resources to make the drink, returns boolean."""
@@ -41,11 +44,8 @@ def print_report():
 
     print(f"Amont of money in register: {total_in_machine}\n")
 
-money_received = 0
-change_rendered = 0
-total_in_machine = money_received - change_rendered
-coffee_machine_on = True
 
+coffee_machine_on = True
 
 def coffee_machine_on():
     choice = input("Please enter a number: \n1. Espresso \n2. Latte \n3. Cappuccino\n" )
@@ -57,41 +57,42 @@ def coffee_machine_on():
         drink_to_make = "latte"
     elif choice == "3":
         drink_to_make = "cappuccino"
-    if choice == "report":
+    elif choice == "report":
         print_report()
         coffee_machine_on()
-    if choice == "off":
+    elif choice == "off":
         return
     else:
         print("That's not an option")
         coffee_machine_on()
 
-    total_entered = 0
-    if enough_resources(drink_to_make):
-        total_entered = count_coins()
+    if choice == "1" or choice == "2" or choice =="3":
+        total_entered = 0
+        if enough_resources(drink_to_make):
+            total_entered = count_coins()
 
-    cost = MENU[drink_to_make]["cost"] 
-    if cost == total_entered:
-        money_received += total_entered
-        print(f"Here's your {drink_to_make}. Enjoy!")
-        resources["water"] -= MENU[drink_to_make]["ingredients"]["water"]
-        resources["coffee"] -= MENU[drink_to_make]["ingredients"]["coffee"]
-        if "milk" in MENU[drink_to_make]["ingredients"]:
-            resources["milk"] -= MENU[drink_to_make]["ingredients"]["milk"]
+        cost = MENU[drink_to_make]["cost"] 
+        if cost == total_entered:
+            money_received += total_entered
+            print(f"Here's your {drink_to_make}. Enjoy!")
+            resources["water"] -= MENU[drink_to_make]["ingredients"]["water"]
+            resources["coffee"] -= MENU[drink_to_make]["ingredients"]["coffee"]
+            if "milk" in MENU[drink_to_make]["ingredients"]:
+                resources["milk"] -= MENU[drink_to_make]["ingredients"]["milk"]
 
-    elif cost < total_entered:
-        money_received += cost
-        change = abs(cost - total_entered)
-        print(f"Here's your change: ${change}")
-        change_rendered += change
-        print(f"Here's your {drink_to_make}. Enjoy!")
-        resources["water"] -= MENU[drink_to_make]["ingredients"]["water"]
-        resources["coffee"] -= MENU[drink_to_make]["ingredients"]["coffee"]
-        if "milk" in MENU[drink_to_make]["ingredients"]:
-            resources["milk"] -= MENU[drink_to_make]["ingredients"]["milk"]
+        elif cost < total_entered:
+            money_received += cost
+            change = abs(cost - total_entered)
+            print(f"Here's your change: ${change}")
+            change_rendered += change
+            print(f"Here's your {drink_to_make}. Enjoy!")
+            resources["water"] -= MENU[drink_to_make]["ingredients"]["water"]
+            resources["coffee"] -= MENU[drink_to_make]["ingredients"]["coffee"]
+            if "milk" in MENU[drink_to_make]["ingredients"]:
+                resources["milk"] -= MENU[drink_to_make]["ingredients"]["milk"]
 
-    else:
-        print(f"Sorry, that's not enough. Here's your refund: ${total_entered}")
+        else:
+            print(f"Sorry, that's not enough. Here's your refund: ${total_entered}")
 
 coffee_machine_on()
 
