@@ -4,6 +4,30 @@ money_in_machine = 0
 
 # TODO: Function to determine if there are enough resources, Function to determine if transaction was successful, Function to return change, Function to "Make coffee": deduct resources, add money to money counter and print success.
 
+def enough_resources(chosen_drink):
+    """Receives the drink selected by the user, determines whether there are enough resources to make the drink, returns boolean."""
+    recipe = MENU[chosen_drink]["ingredients"]
+
+    needed_water = recipe["water"]
+    needed_coffee = recipe["coffee"]
+    needed_milk = 0
+    if "milk" in recipe:
+        needed_milk = recipe["milk"]
+
+    if needed_water > resources["water"]:
+        print("Sorry, there's not enough water")
+        return False
+    if needed_coffee > resources["coffee"]:
+        print("Sorry, there's not enough coffee")
+        return False
+    if needed_milk > resources["milk"]:
+        print("Sorry, there isn'e enough milk")
+        return False
+
+    return True
+
+
+
 # TODO: Prompt user to make a choice
 # TODO: Prompt user to insert coins, how many quarters, dimes, nickels, and pennies.
         # TODO:Check if there's enough Water, Milk, and Coffee to make user's selected drink. Let user know if resources arent sufficient "Sorry, there's not enough water"
