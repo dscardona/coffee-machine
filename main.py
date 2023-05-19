@@ -57,9 +57,9 @@ while coffee_machine_on:
         drink_to_make = "latte"
     elif choice == "3":
         drink_to_make = "cappuccino"
-    elif choice == "report":
+    if choice == "report":
         print_report()
-    elif choice == "off":
+    if choice == "off":
         coffee_machine_on = False
     else:
         print("That's not an option")
@@ -95,3 +95,6 @@ while coffee_machine_on:
 print(resources)
 
 
+#TODO: If a resource runs out, only the message stating so should be displayed. The count_coins function shouldn't be executed
+
+#TODO: When "report" or "off" are input, the enough_resources and count_counts functions should be ignored.
