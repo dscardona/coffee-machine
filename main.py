@@ -93,12 +93,5 @@ while coffee_machine_on:
 
 
 print(resources)
- 
-
-# TODO: Keep prompting user for choice, while loop with off flag or recursion (new "coffee-machine-on "function)
-
-# TODO: End execution with word "off" 
-
-# TODO: Print report with current Water, Milk, Coffee and Money values, with word "report". Prompt again.
 
 
