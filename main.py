@@ -24,8 +24,21 @@ def enough_resources(chosen_drink):
         print("Sorry, there isn'e enough milk")
         return False
 
-    # return True
-    return print("True")
+    return True
+
+
+def count_coins():
+    """Gets number/kind of coins entered, returns amount entered"""
+
+    print("Please insert coins,")
+    quarters_amt = int(input("How many quarters? ")) * .25
+    dimes_amt = int(input("How many dimes? ")) * .10
+    nickels_amt = int(input("How many nickels? ")) * .05
+    pennies_amt = int(input("How many pennies?")) * .01
+
+    total_entered = round(quarters_amt + dimes_amt + nickels_amt + pennies_amt, 2)
+    return total_entered
+
 
 
 choice = input("Please enter a number: \n1. Espresso \n2. Latte \n3. Cappuccino\n" )
@@ -39,24 +52,18 @@ elif choice == "3":
 else:
     print("That's not an option")
 
-enough_resources(drink_to_make)
+
+if enough_resources(drink_to_make):
+    total_entered = count_coins()
 
 
-# TODO: Prompt user to insert coins, how many quarters, dimes, nickels, and pennies.
-        # TODO:Check if there's enough Water, Milk, and Coffee to make user's selected drink. Let user know if resources arent sufficient "Sorry, there's not enough water"
-        # Function to determine if there are enough resources, returns boolean. returns true or false.
 
-        #TODO: If there are enough resources, prompt user to insert coins. Calculate value of the coins inserted.
-            # TODO: Check if user didn't insert enough coins: “Sorry that's not enough money. Money refunded.” Prompt again. return 0.
  
-            #TODO: If enough coins, returns amount inserted.
 
-            #TODO: Function to return negative value if too much money was inserted. 
-        
 
-        #TODO: Another function? If transaction successful (zero not returned from coins inserted check function), and there are enough resources (resources function returns True) , deduct resources from the machine and tell the user: “Here is your {drink_of_choice}. Enjoy!” Print change being returned.
+#TODO: Another function? If transaction successful (zero not returned from coins inserted check function), and there are enough resources (resources function returns True) , deduct resources from the machine and tell the user: “Here is your {drink_of_choice}. Enjoy!” Print change being returned.
 
-    # TODO: Keep prompting user for choice, while loop with off flag or recursion (new "coffee-machine-on "function)
+# TODO: Keep prompting user for choice, while loop with off flag or recursion (new "coffee-machine-on "function)
 
 # TODO: End execution with word "off" 
 
