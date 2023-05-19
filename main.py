@@ -47,7 +47,7 @@ total_in_machine = money_received - change_rendered
 coffee_machine_on = True
 
 
-while coffee_machine_on:
+def coffee_machine_on():
     choice = input("Please enter a number: \n1. Espresso \n2. Latte \n3. Cappuccino\n" )
 
     drink_to_make = ""
@@ -59,10 +59,12 @@ while coffee_machine_on:
         drink_to_make = "cappuccino"
     if choice == "report":
         print_report()
+        coffee_machine_on()
     if choice == "off":
-        coffee_machine_on = False
+        return
     else:
         print("That's not an option")
+        coffee_machine_on()
 
     total_entered = 0
     if enough_resources(drink_to_make):
@@ -91,10 +93,6 @@ while coffee_machine_on:
     else:
         print(f"Sorry, that's not enough. Here's your refund: ${total_entered}")
 
-
-print(resources)
-
+coffee_machine_on()
 
 #TODO: If a resource runs out, only the message stating so should be displayed. The count_coins function shouldn't be executed
-
-#TODO: When "report" or "off" are input, the enough_resources and count_counts functions should be ignored.
